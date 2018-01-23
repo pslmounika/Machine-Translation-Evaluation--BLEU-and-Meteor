@@ -51,11 +51,18 @@ def main():
         h1_match = word_matches(h1, rset)
         h2_match = word_matches(h2, rset)
         """
-        h1_match = calculateF(h1, ref)
-        h2_match = calculateF(h2, ref)
-
-        print(1 if h1_match > h2_match else # \begin{cases}
-                (0 if h1_match == h2_match
+        h1_Fscore = calculateF(h1, ref)
+        h2_Fscore= calculateF(h2, ref)
+        F_weight=1
+        rset = set(ref)
+        h1_match = word_matches(h1, rset)
+        h2_match = word_matches(h2, rset)
+        len_weight=0.5
+        h1_Total=F_weight*h1_Fscore+len_weight*h1_match
+        h2_Total=F_weight*h2_Fscore+len_weight*h2_match
+        #print "hello"
+        print(1 if h1_Total > h2_Total else # \begin{cases}
+                (0 if h1_Total == h2_Total
                     else -1)) # \end{cases}
  
 # convention to allow import of this file as a module
